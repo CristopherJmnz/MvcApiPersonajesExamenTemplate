@@ -1,0 +1,48 @@
+﻿﻿
+@model IEnumerable<MvcApiPersonajesExamenTemplate.Models.Personaje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPersonaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPersonaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                    <img src="@keys.S3BucketUrl@item.Imagen" style="width: 200px"/>
+            </td>
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.IdPersonaje">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdPersonaje">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdPersonaje">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
